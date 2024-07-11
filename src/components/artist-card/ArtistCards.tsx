@@ -23,7 +23,7 @@ export const ArtistCards = (props: ArtistCardsProps) => {
     return (<div className="artists-wrapper">
         {
           props.artists.length > 0 &&  props.artists.map(a => {
-                return <ArtistCard albumsCount={a.albums.length} name={a.name} key={a.name}/>
+                return <ArtistCard id={a.id?.toString() as string} albumsCount={a.albums.length} name={a.name} key={a.name}/>
             })
         }
         <div className="add-artist">

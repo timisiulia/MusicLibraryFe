@@ -30,4 +30,11 @@ export class ArtistService {
         const result = await axios.post(url, artist)
         return result.data
     }
+
+    public static async deleteArtist(name: string)
+    {
+        const url = `${URL_APP}/api/artists/${name}`
+        const result = await axios.delete(url)
+        return result.data
+    }
 }

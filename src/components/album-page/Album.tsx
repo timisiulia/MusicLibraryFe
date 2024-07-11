@@ -8,6 +8,7 @@ import { title } from "process";
 import { SongService } from "../../services/SongService";
 import bin from "../../images/bin.png"
 import { DeleteModal } from "../modal/DeleteModal";
+import { AlbumService } from "../../services/AlbumService";
 
 export interface AlbumProps {
     artistName: string;
@@ -24,6 +25,11 @@ export const AlbumComponent = (props: AlbumProps) => {
         }
        await SongService.addSong(song, albumName)
     }
+
+    const deleteAlbum = async () => {
+        await AlbumService.deleteAlbum(props.album.title, props.artistName)
+    }
+
     return (
     <div className="album">
     <div onClick={() => setShowDescription(!showDescription)} className="album-wrapper">
@@ -60,7 +66,7 @@ export const AlbumComponent = (props: AlbumProps) => {
         itemId={(props.album.id as number).toString()}
         open={showDelete}
         onClose={() => setShowDelete(false)}
-        confirmDelete={() => setShowDelete(false)}
+        confirmDelete={async () => {await deleteAlbum();setShowDelete(false)}}
         itemName={props.album.title}
         />
        <Modal

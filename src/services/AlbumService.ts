@@ -9,5 +9,12 @@ export class AlbumService {
         const result = await axios.post(url, album);
         return result;
     }
+
+    public static async deleteAlbum(album: string, artistName: string)
+    {
+        const url = `${URL_APP}/api/albums/${album}/${artistName}`;
+        const result = await axios.delete(url);
+        return result;
+    }
    
 }

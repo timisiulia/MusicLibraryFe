@@ -32,3 +32,36 @@
     color:white;
     margin-top: -20px;
 }
+
+
+.delete-artist-btn {
+    position:absolute;
+    right:10px;
+}
+
+
+.delete-artist-span {
+    color:white;
+    padding-left:10px;
+}
+.delete-artist {
+    margin-left: 100px;
+    width:200px;
+    margin-top: 10px;;
+    max-width:200px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    :hover {
+        cursor:pointer;
+    }
+}
+
+.delete-artist-btn {
+    position:absolute;
+    right:10px;
+    cursor:pointer;
+}
