@@ -1,0 +1,24 @@
+.add-artist-span {
+    color:white;
+    padding-left:10px;
+}
+.add-artist {
+    margin-left: 100px;
+    margin-top: 20px;
+    width:200px;
+    max-width:200px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    :hover {
+        cursor:pointer;
+    }
+}
+
+.add-artist-btn {
+    position:absolute;
+    right:10px;
+}

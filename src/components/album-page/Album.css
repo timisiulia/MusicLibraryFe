@@ -1,0 +1,65 @@
+.album-wrapper {
+    margin-left: 100px;
+    margin-top: 20px;
+    width:500px;
+    max-width:500px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    :hover {
+        cursor:pointer;
+    }
+}
+.album {
+    margin-bottom: 20px;
+}
+
+.add-song-span {
+    padding-left:10px;
+}
+.add-song {
+    margin-top: 20px;
+    width:200px;
+    max-width:200px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    :hover {
+        cursor:pointer;
+    }
+}
+
+.add-song-btn {
+    position:absolute;
+    right:10px;
+}
+
+.album-title {
+    padding-left: 10px;
+    color:white;
+    font-size:20px;
+    font-weight: 600;
+}
+
+.icon-plus{
+    position:  absolute;
+    right: 10px;
+}
+
+.album-body {
+    width:500px;
+    color:white;
+    padding-left: 100px;
+    padding-top:10px;
+}
+
+.songs-wrapper {
+    display: grid;
+    justify-content: center;
+}

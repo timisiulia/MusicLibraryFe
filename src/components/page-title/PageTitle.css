@@ -1,0 +1,19 @@
+.page-title {
+    width:100%;
+    display:grid;
+    justify-content: center;
+    font-size: 26px;
+}
+
+h2 {
+    color:white;
+}
+
+.celebrate {
+    margin-top: -10px;
+    color: white;
+}
+
+.your-text{
+    color:#BF40BF;
+}

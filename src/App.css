@@ -1,0 +1,14 @@
+
+body {
+  min-height: 100vh;
+  width:100%;
+  background-image: linear-gradient(to left bottom, #cb1919, #b44800, #986100, #797200, #5a7d00, #3a7c2f, #1a794a, #00745e, #006165, #194c5c, #2b3845, #28282b);
+  /*background: #28282B;
+  */
+  }
+
+.main-wrapper {
+  width:100%;
+  height:100vh;
+  display:flex;
+}
