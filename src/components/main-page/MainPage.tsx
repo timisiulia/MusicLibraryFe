@@ -6,7 +6,7 @@ import plus from "./plus.png"
 import "./MainPage.css"
 import { ArtistService } from "../../services/ArtistService"
 import { Artist } from "../../models/Models"
-
+import img2 from "./img2.jpg"
 
 export const MainPage = () => {
     const [artists,setArtists] = useState<Artist[]>([]);
@@ -18,11 +18,8 @@ export const MainPage = () => {
     },[])
     return (
     <div className='main-wrapper'>
-     
-             <img src={img1} height='100%' width="800px"/>
-             <RightSide artists={artists} />
-           
-        
+         <img src={img1} height='100%' width="800px" style={{position:'fixed'}}/>
+        <RightSide artists={artists} />            
     </div>
     
     )

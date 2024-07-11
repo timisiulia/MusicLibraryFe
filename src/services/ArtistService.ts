@@ -1,5 +1,6 @@
 import axios from "axios";
 import { URL_APP } from "./util";
+import { Artist } from "../models/Models";
 
 export class ArtistService {
     public static async getArtists() {
@@ -20,6 +21,13 @@ export class ArtistService {
                 'Content-Type': 'application/json',
             }
         })
+        return result.data
+    }
+
+    public static async addArtist(artist: Artist)
+    {
+        const url = `${URL_APP}/api/artists`
+        const result = await axios.post(url, artist)
         return result.data
     }
 }

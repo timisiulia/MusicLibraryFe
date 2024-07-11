@@ -2,6 +2,7 @@ import rammstein from "../../images/rammstein.jpg"
 import radiohead from "../../images/radiohead.jpg"
 import portishead from "../../images/portishead.jpg"
 import taylor from "../../images/taylorswift.jpg"
+import notavailable from "./notavailable.jpg"
 import "./ArtistCard.css"
 
 
@@ -25,12 +26,12 @@ export const ArtistCard = (props: ArtistCardProps) => {
             case 'Portishead':
                 return portishead
             default:
-                return ""
+                return notavailable
         }
     }
     
     return (<div className="artist-card">
-    <a href={`/albums/${props.name}`}><img className="artist-image" src={getImage()} /></a>
+    <a href={`/albums/${props.name}`}><img className="artist-image" src={getImage()}/></a>
     <div className="artist-info-wrapper">
     <h3 className="artist-name">{props.name}</h3>
     <h4 className="album-count">ALBUMS: {props.albumsCount}</h4>

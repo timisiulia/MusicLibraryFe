@@ -4,6 +4,7 @@ import { ArtistCard } from "./ArtistCard"
 import "./ArtistCard.css"
 import plus from "./plus.png"
 import { Modal } from "../modal/Modal"
+import { ArtistService } from "../../services/ArtistService"
 
 export interface ArtistCardsProps
 {
@@ -12,6 +13,13 @@ export interface ArtistCardsProps
 
 export const ArtistCards = (props: ArtistCardsProps) => {
     const [showModal,setShowModal] = useState(false);
+    const addArtist = async (data:any) => {
+        const artist:Artist = {
+            name: data['artist'],
+            albums: []
+        }
+        await ArtistService.addArtist(artist)
+    }
     return (<div className="artists-wrapper">
         {
           props.artists.length > 0 &&  props.artists.map(a => {
@@ -30,6 +38,6 @@ export const ArtistCards = (props: ArtistCardsProps) => {
             disabled:false
         }]}
         onClose={()=> setShowModal(false)} 
-        onSave={() => console.log('ok')}/>
+        onSave={async (data) => {await addArtist(data); setShowModal(false)}}/>
     </div>)
 }
