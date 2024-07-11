@@ -33,3 +33,36 @@
     position:absolute;
     right:10px;
 }
+
+
+.delete-album-btn {
+    position:absolute;
+    right:10px;
+}
+
+
+.delete-album-span {
+    color:white;
+    padding-left:10px;
+}
+.delete-album {
+    margin-left: 100px;
+    margin-top: 20px;
+    width:200px;
+    max-width:200px;
+    height:50px;
+    border: 1px solid white;
+    border-radius:10px;
+    display:flex;
+    position: relative;
+    align-items: center;
+    :hover {
+        cursor:pointer;
+    }
+}
+
+.delete-album-btn {
+    position:absolute;
+    right:10px;
+    cursor:pointer;
+}

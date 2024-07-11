@@ -9,4 +9,11 @@ export class SongService {
         const result = await axios.post(url, song)
         return result.data;
     }
+
+    public static async deleteSong(song: string, albumName: string)
+    {
+        const url = `${URL_APP}/api/songs/${song}/${albumName}`
+        const result = await axios.delete(url)
+        return result.data;
+    }
 }

@@ -20,3 +20,9 @@
     right: 10px;
     font-weight: 600;
 }
+
+.delete-song-btn {
+    position:absolute;
+    right:50px;
+    cursor:pointer;
+}

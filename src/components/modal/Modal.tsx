@@ -39,7 +39,7 @@ export const Modal = (props: ModalProps) => {
            })
          }
          <div className="save-btn-wrapper">
-           <button onClick={() => {props.onSave(modalValues)}} className="save-btn">SAVE</button>
+           <button disabled={Object.values(modalValues).filter(x=> x === "").length > 0} onClick={() => {props.onSave(modalValues)}} className="save-btn">SAVE</button>
        </div>
        </div>
      </div> : null

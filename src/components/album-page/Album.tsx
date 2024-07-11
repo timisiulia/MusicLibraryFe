@@ -6,6 +6,8 @@ import { SongComponent } from "./Song";
 import { Modal } from "../modal/Modal";
 import { title } from "process";
 import { SongService } from "../../services/SongService";
+import bin from "../../images/bin.png"
+import { DeleteModal } from "../modal/DeleteModal";
 
 export interface AlbumProps {
     artistName: string;
@@ -14,6 +16,7 @@ export interface AlbumProps {
 export const AlbumComponent = (props: AlbumProps) => {
     const [showDescription,setShowDescription] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [showDelete,setShowDelete] = useState(false)
     const addSong = async (data:any, albumName: string) => {
         const song: Song = {
             title: data['songTitle'],
@@ -36,7 +39,7 @@ export const AlbumComponent = (props: AlbumProps) => {
         <div className="songs-wrapper">
         {
             props.album.songs.map(s=> {
-                return <SongComponent key={s.id} song={s}/>
+                return <SongComponent albumName={props.album.title} key={s.id} song={s}/>
             })
         }
         </div>
@@ -49,6 +52,17 @@ export const AlbumComponent = (props: AlbumProps) => {
        
         </div> : null
        }
+        <div className="delete-album">
+        <span className="delete-album-span">Delete Album</span>
+        <img onClick={()=> setShowDelete(true)} className="delete-album-btn" width="25px" height="25px" src={bin} />
+        </div>
+        <DeleteModal
+        itemId={(props.album.id as number).toString()}
+        open={showDelete}
+        onClose={() => setShowDelete(false)}
+        confirmDelete={() => setShowDelete(false)}
+        itemName={props.album.title}
+        />
        <Modal
        open={showModal}   
        fields={[

@@ -6,7 +6,8 @@ import { Modal } from "../modal/Modal";
 import { Album } from "../../models/Models";
 import { ArtistService } from "../../services/ArtistService";
 import { AlbumService } from "../../services/AlbumService";
-
+import bin from "../../images/bin.png"
+import { DeleteModal } from "../modal/DeleteModal";
 
 
 export const AlbumPage = () => {
@@ -18,6 +19,7 @@ export const AlbumPage = () => {
         })
     },[])
     const [showModal,setShowModal] = useState(false)
+    const [showDelete, setShowDelete] = useState(false)
 
     const addAlbum = async (data:any) => {
         const album: Album = {
@@ -36,7 +38,7 @@ export const AlbumPage = () => {
       <div className="add-album">
         <span className="add-album-span">Add Album</span>
         <img onClick={()=> setShowModal(true)} className="add-album-btn" width="25px" height="25px" src={plus} />
-        </div>
+     </div>
     </div>
     <Modal
     onClose={()=>setShowModal(false)}
