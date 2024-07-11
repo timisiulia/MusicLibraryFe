@@ -1,5 +1,7 @@
+import { useState } from "react";
 import "./Modal.css"
 import { ModalFieldComponent } from "./ModalField";
+import { DataType } from "../../services/util";
 
 export interface ModalField {
     disabled?:boolean;
@@ -10,12 +12,13 @@ export interface ModalField {
 
 export interface ModalProps {
     onClose: () => void;
-    onSave:() => void;
+    onSave:(data:any) => void;
     fields: ModalField[];
     open:boolean;
 }
 
 export const Modal = (props: ModalProps) => {
+   const[modalValues,setValues] = useState<{[key:string]:string}>({})
     return (
     <>
      {
@@ -28,11 +31,15 @@ export const Modal = (props: ModalProps) => {
         </div>
          {
            props.fields.map(field => {
-               return <ModalFieldComponent onChange={(value: string) => console.log(value)} field={field}/>
+               return <ModalFieldComponent key={field.fieldKey}
+                onChange={(value: string) => {
+                  setValues({...modalValues,[field.fieldKey]:value})
+                }} 
+                field={field}/>
            })
          }
          <div className="save-btn-wrapper">
-           <button className="save-btn">SAVE</button>
+           <button onClick={() => {props.onSave(modalValues)}} className="save-btn">SAVE</button>
        </div>
        </div>
      </div> : null

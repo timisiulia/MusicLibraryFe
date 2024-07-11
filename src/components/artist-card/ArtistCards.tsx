@@ -14,7 +14,7 @@ export const ArtistCards = (props: ArtistCardsProps) => {
     const [showModal,setShowModal] = useState(false);
     return (<div className="artists-wrapper">
         {
-            props.artists.map(a => {
+          props.artists.length > 0 &&  props.artists.map(a => {
                 return <ArtistCard albumsCount={a.albums.length} name={a.name} key={a.name}/>
             })
         }

@@ -5,13 +5,13 @@
 }
 
 .artist-image {
-    width:400px;
-    height:200px;
+    width:450px;
+    height:300px;
     border-radius: 5%;
 }
 
 .artists-wrapper {
-    grid-template-columns: repeat(auto-fit, 400px);
+    grid-template-columns: repeat(auto-fit, 450px);
     gap: 20px;
     display: grid;
     width:100%;

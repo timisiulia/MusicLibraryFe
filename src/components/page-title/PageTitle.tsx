@@ -1,5 +1,3 @@
-import { data } from "../../data"
-import { ArtistCards } from "../artist-card/ArtistCards"
 import "./PageTitle.css"
 
 export const PageTitle = () => {

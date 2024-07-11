@@ -1,19 +1,37 @@
-import { useState } from "react";
-import { data } from "../../data"
+import { useEffect, useState } from "react";
 import { AlbumComponent } from "./Album";
 import "./AlbumPage.css"
 import plus from "./plus.png"
 import { Modal } from "../modal/Modal";
+import { Album } from "../../models/Models";
+import { ArtistService } from "../../services/ArtistService";
+import { AlbumService } from "../../services/AlbumService";
+
+
 
 export const AlbumPage = () => {
     const artistName = decodeURIComponent(window.location.href.split("/")[window.location.href.split("/").length-1])
+    const [albums,setAlbums] = useState<Album[]>([])
+    useEffect(() => {
+        ArtistService.getArtistByName(artistName).then((data) => {
+            setAlbums(data.albums)
+        })
+    },[])
     const [showModal,setShowModal] = useState(false)
-    const albums = data.filter(x=> x.name === artistName)[0].albums;
+
+    const addAlbum = async (data:any) => {
+        const album: Album = {
+            title: data['album'],
+            description: data['description'],
+            songs: []
+        }
+        await AlbumService.addAlbum(album, artistName)
+    }
     return (<div className="albums-page">
     <h1 className="header-albums">Albums {artistName}</h1>
     <div className="albums">
         {albums.map(album => {
-            return <AlbumComponent artistName={artistName} album={album} />
+            return <AlbumComponent key={album.id} artistName={artistName} album={album} />
         })}
       <div className="add-album">
         <span className="add-album-span">Add Album</span>
@@ -23,7 +41,7 @@ export const AlbumPage = () => {
     <Modal
     onClose={()=>setShowModal(false)}
     open={showModal}
-    onSave={() => console.log('ok')}
+    onSave={async (data:any) => {await addAlbum(data); setShowModal(false)}}
     fields={[{
         fieldKey:'artist',
         fieldName: 'Artist',
