@@ -1,3 +1,28 @@
+# Music Library
+
+The Music Library project is designed to enhance users' musical experiences by providing a beautifully organized library of various artists. Each artist's albums are clearly described, and the songs within each album are meticulously listed.
+
+The backend of this application is built using Java Spring Boot, while the database is managed with PostgreSQL. The frontend is developed using React, ensuring a seamless and interactive user experience.
+
+## Frontend (React + TypeScript)
+- Node.js
+- npm
+
+
+### Installation
+- Open a terminal and write:
+
+git clone https://github.com/timisiulia/MusicLibraryFe.git
+
+- Install the dependencies using: npm install
+
+- Build and run the project using npm run start
+
+- The application will be available at http://localhost:3000.
+
+
+#Auto-Generated
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
