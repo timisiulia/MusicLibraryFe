@@ -2,13 +2,11 @@
 import "./Modal.css"
 export interface DeleteModalProps {
     onClose: () => void;
-    confirmDelete:(itemId: string) => void;
+    confirmDelete:(itemName: string) => void;
     open:boolean;
-    itemId:string;
     itemName: string;
 }
 export const DeleteModal = (props: DeleteModalProps) => {
-    console.log(props)
     return (
         props.open ?  
        <div className="modal">
@@ -22,7 +20,7 @@ export const DeleteModal = (props: DeleteModalProps) => {
         <span className="delete-message">Are you sure you want to delete {props.itemName} ?</span>
         </div>
         <div className="buttons-wrapper-delete">
-           <button onClick={() => {props.confirmDelete(props.itemId)}} className="confirm-delete">Delete</button>
+           <button onClick={() => {props.confirmDelete(props.itemName)}} className="confirm-delete">Delete</button>
            <button onClick={props.onClose} className="close-delete">Cancel</button>
            </div>
        </div>

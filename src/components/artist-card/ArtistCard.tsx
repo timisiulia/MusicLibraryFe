@@ -13,6 +13,7 @@ export interface ArtistCardProps {
     id:string;
     name: string;
     albumsCount: number;
+    deleteArtist:(name:string) => void;
 }
 
 export const ArtistCard = (props: ArtistCardProps) => {
@@ -33,10 +34,6 @@ export const ArtistCard = (props: ArtistCardProps) => {
                 return notavailable
         }
     }
-    
-    const deleteArtist = async () => {
-        await ArtistService.deleteArtist(props.name)
-    }
 
     return (<div className="artist-card">
     <a href={`/albums/${props.name}`}><img className="artist-image" src={getImage()}/></a>
@@ -51,10 +48,9 @@ export const ArtistCard = (props: ArtistCardProps) => {
     <h4 className="album-count">ALBUMS: {props.albumsCount}</h4>
     
         <DeleteModal
-        itemId={props.id}
         open={showDelete}
         onClose={() => setShowDelete(false)}
-        confirmDelete={async () => {await deleteArtist();setShowDelete(false)}}
+        confirmDelete={async () => { props.deleteArtist(props.name);setShowDelete(false)}}
         itemName={props.name}
         />
     </div>

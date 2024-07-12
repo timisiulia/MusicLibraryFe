@@ -9,21 +9,17 @@ import { ArtistService } from "../../services/ArtistService"
 export interface ArtistCardsProps
 {
     artists: Artist[]
+    deleteArtist:(name:string) => void;
+    addArtist:(data:any) => void;
 }
 
 export const ArtistCards = (props: ArtistCardsProps) => {
     const [showModal,setShowModal] = useState(false);
-    const addArtist = async (data:any) => {
-        const artist:Artist = {
-            name: data['artist'],
-            albums: []
-        }
-        await ArtistService.addArtist(artist)
-    }
+    
     return (<div className="artists-wrapper">
         {
           props.artists.length > 0 &&  props.artists.map(a => {
-                return <ArtistCard id={a.id?.toString() as string} albumsCount={a.albums.length} name={a.name} key={a.name}/>
+                return <ArtistCard deleteArtist={(name:string) => props.deleteArtist(name)} id={a.id?.toString() as string} albumsCount={a.albums.length} name={a.name} key={a.name}/>
             })
         }
         <div className="add-artist">
@@ -38,6 +34,6 @@ export const ArtistCards = (props: ArtistCardsProps) => {
             disabled:false
         }]}
         onClose={()=> setShowModal(false)} 
-        onSave={async (data) => {await addArtist(data); setShowModal(false)}}/>
+        onSave={async (data) => {props.addArtist(data); setShowModal(false)}}/>
     </div>)
 }

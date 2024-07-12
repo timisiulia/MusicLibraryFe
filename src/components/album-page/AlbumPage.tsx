@@ -19,7 +19,13 @@ export const AlbumPage = () => {
         })
     },[])
     const [showModal,setShowModal] = useState(false)
-    const [showDelete, setShowDelete] = useState(false)
+  
+    
+    const deleteAlbum = async (title:string) => {
+        const deleted = albums.filter(a => a.title !== title)
+        setAlbums(deleted);
+        await AlbumService.deleteAlbum(title, artistName)
+    }
 
     const addAlbum = async (data:any) => {
         const album: Album = {
@@ -27,13 +33,18 @@ export const AlbumPage = () => {
             description: data['description'],
             songs: []
         }
+        const added = [...albums,album]
+        setAlbums(added)
         await AlbumService.addAlbum(album, artistName)
     }
+
+
+
     return (<div className="albums-page">
     <h1 className="header-albums">Albums {artistName}</h1>
     <div className="albums">
         {albums.map(album => {
-            return <AlbumComponent key={album.id} artistName={artistName} album={album} />
+            return <AlbumComponent deleteAlbum={deleteAlbum} key={album.id} artistName={artistName} album={album} />
         })}
       <div className="add-album">
         <span className="add-album-span">Add Album</span>
